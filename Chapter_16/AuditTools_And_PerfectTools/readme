@@ -1,0 +1,29 @@
+Git Repo For Framework Pentester (All Tools For pentesters in All Section of Cyber Security)
+	https://github.com/trustedsec/ptf/tree/master
+	
+	ptf> use modules/exploitation/metasploit
+	ptf:(modules/exploitation/metasploit)>install      => Install one Module 
+
+	use modules/install_update_all    => install all Module (tools)
+	Also Have Set framework
+
+- - - - - - - - 
+tools `Arpwatch` Detect Arp Spoofing
+- - - - - - - - 
+For Hardening Use :  git clone https://github.com/Jsitech/JShielder
+		Repo Above Apply Recomendation Organization Center for Internet Security                      (CIS).
+
+- `ufw` Good Fron-end Tool For Managing Iptables 
+- - - - - - - - Need Most Explore
+-* Another tool `selinux-activate` For Hardening (developed by the NSA and RedHat) page 331
+	apt-get install selinux-basics selinux-policy-default auditd
+	selinux-activate	
+
+	When a process attempts to access a file, SELinux will check the file’s policy 	attributes to determine if process is allowed to access the file. SELinux also 
+        logs the accesses it blocks, making these logs a great place to check for suspected intrusions.
+- - - - - - - - 
+Tool For Audit System ( against the CIS benchmarks):
+	lynis audit system
+- - - - - - - -
+In addition to hardening your server, you should also enable full disk encryption.
+
