@@ -1,0 +1,12 @@
+Command:
+	pip3 install pyinstaller
+	pyinstaller --onefile implant.py
+
+- Implant Must Linux executable from the original Code And MUST unobfuscated file OtherWise Thrrow Error Dependency.
+
+- To Create Windows executable (.exe) by running `pyinstaller` on a Windows machine.
+  The commands are the same, and running them on a Windows device will generate a Windows executable.
+	Refferef: Page 218
+
+
+- You can embed the resulting Linux executable in a Trojan using the same techniques discussed earlier in the chapter.
