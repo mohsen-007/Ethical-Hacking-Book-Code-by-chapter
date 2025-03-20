@@ -1,0 +1,8 @@
+in THis 2 Foler We Do :
+	- Authintication to LdapServer as User Anonymous
+	- Same As Above As User Default User (Admin)
+
+in The Last Login To `https://ipa.demo1.freeipa.org` And see what system Administrator sees
+	user: admin   pass: Secret123
+
+Doc: https://www.freeipa.org/page/Demo
