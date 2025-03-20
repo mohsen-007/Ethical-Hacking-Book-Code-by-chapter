@@ -1,0 +1,1 @@
+savedcmd_/home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/hello.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/hello.ko /home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/hello.o /home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/hello.mod.o
