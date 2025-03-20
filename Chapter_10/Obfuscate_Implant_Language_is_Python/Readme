@@ -1,0 +1,3 @@
+Command:
+	pip3 install pyarmor
+	pyarmor gen implant.py
