@@ -1,0 +1,8 @@
+HELLO gmail.com
+MAIL FROM: <noob@gmail.com>
+RCPT TO:<sys> => Exploit This Behavior To List Register Email To mail Server
+DATA 
+	From: "xx" <noob@gmail.com>
+	Subject: xxxxxxxxxx
+	body
+	. 
