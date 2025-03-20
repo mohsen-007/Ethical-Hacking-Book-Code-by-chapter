@@ -1,0 +1,6 @@
+
+what is the goal ? 
+	i want to Connect to vps Via Tor, So We Must Do Step Bellow:
+		1. Download This Git repo to Setup IP Chnager Tor.
+			https://github.com/FDX100/Auto_Tor_IP_changer
+		2. Use `torsocks ssh USER@Host` To Connect to Server Via Tor.
