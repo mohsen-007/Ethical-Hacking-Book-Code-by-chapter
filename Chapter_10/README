@@ -1,0 +1,8 @@
+
+Walkthrrow Exercise:
+	1. use Evil-Droid To Generate APK AND Sign it => Failed Deprecated
+	2. Write Python Implant That ScrrenShot Form Victime + Additoinal Send It To Attacker (NOt Do it Addittinal) 
+	3. Obfuscated Own Implant Python + Convert Original Pythno Implant To Executable File (ELF,exe) + Failed In Create Obfuscated Excutable Detail In Bel           low 
+
+To create an obfuscated executable, run the following command on the original file: # Failed I Dont Find Switch And Do It Must MOst Explore  
+	pyarmor pack implant.py => Reffere 219 Deprecated Switch i Undrestood And Not Implement This Functinallyty On `pyarmor`
