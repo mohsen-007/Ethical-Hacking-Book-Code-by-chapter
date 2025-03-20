@@ -1,0 +1,4 @@
+
+we First Generate Assynetric Key next Login To SSh Server Via PairKeys
+
+	ssh-keygen -b 521 -t ecdsa
