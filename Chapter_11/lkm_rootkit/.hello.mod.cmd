@@ -1,0 +1,1 @@
+savedcmd_/home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/hello.mod := printf '%s\n'   hello.o | awk '!x[$$0]++ { print("/home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/"$$0) }' > /home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/hello.mod
