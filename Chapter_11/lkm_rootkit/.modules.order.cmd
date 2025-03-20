@@ -1,1 +1,0 @@
-savedcmd_/home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/modules.order := {   echo /home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/hello.o; :; } > /home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/modules.order

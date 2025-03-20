@@ -1,1 +1,0 @@
-savedcmd_/home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/Module.symvers -T /home/noob/Desktop/ethical-hacking/Chapter_11/lkm_rootkit/modules.order -i Module.symvers -e 

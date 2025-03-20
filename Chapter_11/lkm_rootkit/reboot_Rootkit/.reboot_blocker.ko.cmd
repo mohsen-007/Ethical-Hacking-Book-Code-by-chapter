@@ -1,1 +1,0 @@
-savedcmd_/home/noob/Desktop/ethical-hacking/Chapter_11/xxx/c/reboot_blocker.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/noob/Desktop/ethical-hacking/Chapter_11/xxx/c/reboot_blocker.ko /home/noob/Desktop/ethical-hacking/Chapter_11/xxx/c/reboot_blocker.o /home/noob/Desktop/ethical-hacking/Chapter_11/xxx/c/reboot_blocker.mod.o
